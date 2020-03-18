@@ -12,5 +12,5 @@ function genererCheckbox($arg) {
     echo "</form>";
 }
 
-genererCheckbox($elements);
+genererCheckbox($elements); // 
 ?>

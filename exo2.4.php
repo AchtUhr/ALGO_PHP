@@ -1,42 +1,35 @@
 <?php
 $capitales = ["France"=>"Paris", "Allemagne"=>"Berlin", "USA"=>"Washington", "Italie"=>"Rome"];
 
+function afficherTableHTML($tableau) {
+    ksort($tableau);
 
-function triage($arg) {
-    foreach ($arg as $pays => $capitale) {
-        $pays = strtoupper($pays);
-        $maj[$pays] = $capitale;
-    }
-    ksort($maj);
-    return $maj;
-}
+    $resultat = ""; 
 
-function afficherTableHTML($arg) {
-        
-    $tableauTrie = triage($arg);
-
-    echo "<table>
-            <thead>
-                <tr>
-                    <th>Pays</th>
-                    <th>Capitale</th>
-                    <th>Lien Wiki</th>
-                </tr>
-            </thead>
-            <tbody>";
+    $resultat.= "<table>
+                    <thead>
+                        <tr>
+                            <th>Pays</th>
+                            <th>Capitale</th>
+                            <th>Lien Wiki</th>
+                        </tr>
+                    </thead>
+                    <tbody>";
     
-    foreach ($tableauTrie as $pays => $capitale) {
+    foreach ($tableau as $pays => $capitale) {
 
-    echo"<tr>
-            <td>$pays</td>
-            <td>$capitale</td>
-            <td><a href='https://fr.wikipedia.org/wiki/" . strtolower($pays) . "' action='_blank'>Lien</a></td>
-        </tr>";  // Le lien nécessite que le nom du pays soit en minuscule
+    $resultat.="<tr>
+                    <td>" . mb_strtoupper($pays) . "</td>
+                    <td>$capitale</td>
+                    <td><a href='https://fr.wikipedia.org/wiki/" . $pays . "' action='_blank'>Lien</a></td>
+                </tr>";  
                 
     }
-    echo "</tbody>
+    $resultat.= "</tbody>
         </table>";
+    
+    return $resultat;
 }
 
-afficherTableHTML($capitales);
+echo afficherTableHTML($capitales);
 ?>

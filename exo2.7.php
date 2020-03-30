@@ -1,16 +1,17 @@
 <?php
-$elements = ["Choix 1"=>false,
-             "Choix 2"=>false, 
-             "Choix 3"=>false];
+$elements = ["Choix 1"=>"unchecked",
+             "Choix 2"=>"checked", 
+             "Choix 3"=>"unchecked"];
 
 function genererCheckbox($arg) {
 
-    echo "<form>";
-    foreach ($arg as $value) {
-        echo "<input type='radio';
+    $resultat = "";
+    $resultat.= "<form>";
+    foreach ($arg as $choix => $check) {
+        $resultat.= "<label for='$choix'>$choix</label><input type='checkbox' $check><br>"; 
     }
-    echo "</form>";
+    $resultat.= "</form>";
+    return $resultat;
 }
-
-genererCheckbox($elements); // 
+echo genererCheckbox($elements);
 ?>

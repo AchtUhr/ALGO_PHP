@@ -3,20 +3,21 @@ $elements = ["Monsieur","Madame","Mademoiselle"];
 
 function alimenterListeDeroulante($arg) {
 
-$i = 0;
+    $resultat = "";
+    $resultat.= "<form>
+            <select>";
+    
     foreach ($arg as $value) {
         
-        $select[$i] = "<option value='$value'>$value</option><br>";
-        $i++;
+        $resultat.= "<option value='$value'>$value</option><br>";
     }
-    return $select;
-}
 
-echo "<form>
-        <select>";
-echo("alimenterListeDeroulante($elements)");
-echo "  </select>
+    $resultat.= "</select>
     </form>";
 
+    return $resultat;
+}
+
+echo alimenterListeDeroulante($elements);
 
 ?>

@@ -1,15 +1,9 @@
+<?php
 
-    <?php
-        $texte ="Mon texte en paramètre";
+$texte ="Mon texte en paramètre";
 
-        if ($texte == "Mon texte en paramètre") {
-            echo "<div>
-                    <style>
-                        p{
-                            color: red;
-                        }
-                    </style>
-                    <p>$texte</p>
-                   <div>";
-        } //
-    ?>
+function convertirMajRouge($arg) {
+    return "<p style='color:red'>".mb_strtoupper($arg)."</p>";
+}
+echo convertirMajRouge($texte);
+?>

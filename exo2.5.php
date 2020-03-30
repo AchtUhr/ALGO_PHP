@@ -2,12 +2,14 @@
 $nomsInput = ["Nom", "Prénom", "Ville"];
 function afficherInput($arg) {
 
-    echo "<form>";
+    $resultat = "";
+    $resultat.= "<form>";
     foreach ($arg as $value) {
-        echo "<label>$value<br><input type='text' name='$value' id='$value'></label><br>";
+        $resultat.= "<label>$value<br><input type='text' name='$value' id='$value'></label><br>";
     }
-    echo "</form>";
+    $resultat.= "</form>";
+    return $resultat;
 }
 
-afficherInput($nomsInput);
+echo afficherInput($nomsInput);
 ?>

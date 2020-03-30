@@ -3,20 +3,22 @@
 $capitales = ["France"=>"Paris", "Allemagne"=>"Berlin", "USA"=>"Washington", "Italie"=>"Rome"];
 
 
-function triage($arg) {
+function maj($arg) {
     foreach ($arg as $pays => $capitale) {
         $pays = strtoupper($pays);
         $maj[$pays] = $capitale;
     }
-    ksort($maj);
     return $maj;
 }
 
 function afficherTableHTML($arg) {
         
-    $tableauTrie = triage($arg);
+    $tableauMaj = maj($arg);
+    ksort($tableauMaj);
 
-    echo "<table>
+    $resultat = ""; 
+ 
+    $resultat.= "<table>
             <thead>
                 <tr>
                     <th>Pays</th>
@@ -25,16 +27,18 @@ function afficherTableHTML($arg) {
             </thead>
             <tbody>";
     
-    foreach ($tableauTrie as $pays => $capitale) {
-    echo"<tr>
+    foreach ($tableauMaj as $pays => $capitale) {
+    $resultat.="<tr>
             <td>$pays</td>
             <td>$capitale</td>
         </tr>";
-                
-            }
-    echo "</tbody>
+     }
+
+    $resultat.= "</tbody>
         </table>";
+
+    return $resultat;
 }
 
-afficherTableHTML($capitales);
+echo afficherTableHTML($capitales);
     ?>

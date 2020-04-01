@@ -3,17 +3,12 @@
 $capitales = ["France"=>"Paris", "Allemagne"=>"Berlin", "USA"=>"Washington", "Italie"=>"Rome"];
 
 
-function maj($arg) {
-    foreach ($arg as $pays => $capitale) {
-        $pays = strtoupper($pays);
-        $maj[$pays] = $capitale;
-    }
-    return $maj;
-}
-
 function afficherTableHTML($arg) {
-        
-    $tableauMaj = maj($arg);
+    
+    foreach ($arg as $pays => $capitale) {
+        $tableauMaj[strtoupper($pays)] = $capitale;
+    }
+    
     ksort($tableauMaj);
 
     $resultat = ""; 
